@@ -12,9 +12,10 @@ async fn main() {
     teloxide::repl(bot, |bot: Bot, msg: Message| async move {
         match msg.text() {
             Some(text) => bot.send_message(msg.chat.id, text).await?,
-            None => bot.send_message(msg.chat.id, "Send me plain text.").await?
+            None => bot.send_message(msg.chat.id, "Send me plain text.").await?,
         };
 
         Ok(())
-    }).await;
+    })
+    .await;
 }
