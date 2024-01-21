@@ -4,8 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+teloxide = { version = "0.12", features = ["macros"] }
 dotenv = "0.15.0"
-env_logger = "0.11.0"
+pretty_env_logger = "0.5.0"
 log = "0.4.20"
 redis = { version = "0.24.0", features = ["tokio-comp"] }
-tokio = { version = "1", features = ["rt"] }
+tokio = { version = "1", features = ["rt", "rt-multi-thread", "macros"] }
