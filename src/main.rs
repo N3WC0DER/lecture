@@ -132,17 +132,15 @@ async fn handle_institute(
         ("THREE".to_string(), 3),
     ]);
 
-    let institute_id = institutes[&query.data.expect("wtf?")];
+    let name = &query.data.expect("wtf?");
+
+    let institute_id = institutes[name];
 
     bot.answer_callback_query(query.id).await?;
 
     let new_user = if let Some(Message { id, chat, .. }) = query.message {
-        bot.edit_message_text(
-            chat.id,
-            id,
-            format!("Good! Your institute: {}", &query.data.expect("wtf?")),
-        )
-        .await?;
+        bot.edit_message_text(chat.id, id, format!("Good! Your institute: {}", name))
+            .await?;
 
         User {
             chat_id: chat.id.0,
