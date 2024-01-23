@@ -5,3 +5,5 @@ Cargo.lock
 *.pdb
 
 .env
+migrations/.keep
+/libintl-9.dll
